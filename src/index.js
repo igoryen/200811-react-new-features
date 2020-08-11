@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
 const App = () => {
+    const array = useState(10)
+
+
     return (
         <div>
-            <p>The current count is 0</p>
+            <p>The current count is {array[0]}</p>
         </div>
     );
 };
