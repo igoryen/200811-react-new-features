@@ -2,27 +2,55 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
-const App = (props) => {
-    const [count, setCount] = useState(props.count)
-    const [text, setText] = useState('')
+const NoteApp = () => {
+    const [notes, setNotes] = useState([])
+    const [title, setTitle] = useState('')
+
+    const addNote = (e) => {
+        e.preventDefault()
+        setNotes([
+            ...notes,
+            { title }
+        ])
+        setTitle('')
+    }
 
     return (
         <div>
-            <p>The current {text || 'count'} is {count}</p>
-            <button onClick={() => setCount(count - 1)}>-1</button>
-            <button onClick={() => setCount(props.count)}>reset</button>
-            <button onClick={() => setCount(count + 1)}>+1</button>
-            <input value={text} onChange={(e) => setText(e.target.value)}/>
-        </div>
-    );
-};
+            <h1>Notes</h1>
+            {notes.map( (note) => (
+                <div key={note.title}>
+                    <h3>{note.title}</h3>
+                </div>
+            ))}
+            <p>Add note</p>
 
-App.defaultProps = {
-    count: 0
+            <form onSubmit={addNote}>
+                <input value={title} onChange={(e) => setTitle(e.target.value)} />
+                <button>add note</button>
+            </form>
+        </div>
+    )
 }
 
+// const App = (props) => {
+//     const [count, setCount] = useState(props.count)
+//     const [text, setText] = useState('')
+
+//     return (
+//         <div>
+//             <p>The current {text || 'count'} is {count}</p>
+//             <button onClick={() => setCount(count - 1)}>-1</button>
+//             <button onClick={() => setCount(props.count)}>reset</button>
+//             <button onClick={() => setCount(count + 1)}>+1</button>
+//             <input value={text} onChange={(e) => setText(e.target.value)}/>
+//         </div>
+//     );
+// };
+
+
 ReactDOM.render(
-  <App count={2} />,
+  <NoteApp />,
   document.getElementById('root')
 );
 
