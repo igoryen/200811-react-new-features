@@ -2,19 +2,27 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
-const App = () => {
-    const [count, setCount] = useState(10)
+const App = (props) => {
+    const [count, setCount] = useState(props.count)
+    const [text, setText] = useState('')
 
     return (
         <div>
-            <p>The current count is {count}</p>
+            <p>The current {text || 'count'} is {count}</p>
+            <button onClick={() => setCount(count - 1)}>-1</button>
+            <button onClick={() => setCount(props.count)}>reset</button>
             <button onClick={() => setCount(count + 1)}>+1</button>
+            <input value={text} onChange={(e) => setText(e.target.value)}/>
         </div>
     );
 };
 
+App.defaultProps = {
+    count: 0
+}
+
 ReactDOM.render(
-  <App />,
+  <App count={2} />,
   document.getElementById('root')
 );
 
