@@ -3,12 +3,16 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
 const App = () => {
-    const [count] = useState(10)
+    const [count, setCount] = useState(10)
 
+    const increment = () => {
+        setCount( count + 1 )
+    }
 
     return (
         <div>
             <p>The current count is {count}</p>
+            <button onClick={increment}>+1</button>
         </div>
     );
 };
