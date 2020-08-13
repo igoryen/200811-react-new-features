@@ -54,7 +54,7 @@ const App = (props) => {
     useEffect(() => {
         console.log('useEffect ran')
         document.title = count
-    })
+    }, [count])
 
     return (
         <div>
@@ -69,7 +69,7 @@ const App = (props) => {
 
 
 ReactDOM.render(
-  <NoteApp />,
+  <App count={0}/>,
   document.getElementById('root')
 );
 
