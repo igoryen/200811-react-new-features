@@ -52,6 +52,10 @@ const App = (props) => {
     const [text, setText] = useState('')
 
     useEffect(() => {
+        console.log('This should only run once!')
+    }, [])
+
+    useEffect(() => {
         console.log('useEffect ran')
         document.title = count
     }, [count])
