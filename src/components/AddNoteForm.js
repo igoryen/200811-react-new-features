@@ -17,7 +17,7 @@ const AddNoteForm = () => {
     }
 
     return (
-        <div>
+        <>
             <p>Add note</p>
 
             <form onSubmit={addNote}>
@@ -25,7 +25,7 @@ const AddNoteForm = () => {
                 <textarea value={body} onChange={(e) => setBody(e.target.value)}></textarea>
                 <button>add note</button>
             </form>
-        </div>
+        </>
     )
 }
 
